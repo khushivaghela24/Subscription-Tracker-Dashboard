@@ -5,6 +5,8 @@ import viewImg from "../images/view.jpg";
 import deleteImg from "../images/delete.jpg";
 import analyticsImg from "../images/analytics.jpg";
 import reminderImg from "../images/reminder.jpg";
+import { FaUsers, FaBullseye, FaHandshake } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter } from "react-icons/fa";
 
 export default function Home() {
   return (
@@ -226,22 +228,79 @@ export default function Home() {
             </form>
         </div>
         </section>
-  
-        {/* About Us Section */}
-        <section className="py-16 bg-gray-100">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-            <h3 className="text-3xl font-bold text-green-800 mb-6">
+
+      {/* About Us Section */}
+      <section className="py-16 bg-gray-200">
+        <div className="max-w-6xl mx-auto px-6">
+          {/* Title */}
+          <h3 className="text-3xl font-bold text-center text-green-800 mb-12">
             About Us
-            </h3>
-            <p className="text-lg text-gray-700 leading-relaxed">
-            Subscription Tracker is designed to help you stay in control of your recurring services.  
-            Our mission is to simplify the way you manage payments, renewals, and expenses.  
-            With easy-to-use features, insightful analytics, and timely reminders,  
-            we ensure that you never miss a renewal or overspend on forgotten subscriptions.  
-            Built with a clean interface and powerful tools, it's your one-stop solution for smarter subscription management.
-            </p>
+          </h3>
+
+          {/* Grid Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
+            {/* Our Team */}
+            <div className="p-6 bg-gray-50 shadow-md rounded-lg hover:shadow-lg transition">
+              <FaUsers className="text-green-800 text-4xl mx-auto mb-4" />
+              <h4 className="text-xl font-semibold mb-2 text-green-800">Our Team</h4>
+              <p className="text-gray-700 text-sm leading-relaxed">
+                We are a group of passionate developers and designers dedicated to 
+                building tools that simplify your subscription management.  
+                Collaboration and innovation are at the heart of our work.
+              </p>
+            </div>
+
+            {/* Our Mission */}
+            <div className="p-6 bg-gray-50 shadow-md rounded-lg hover:shadow-lg transition">
+              <FaBullseye className="text-green-800 text-4xl mx-auto mb-4" />
+              <h4 className="text-xl font-semibold mb-2 text-green-800">Our Mission</h4>
+              <p className="text-gray-700 text-sm leading-relaxed">
+                Our mission is to help individuals and businesses save time and 
+                money by providing a single place to track, analyze, and manage 
+                all their subscriptions effectively.
+              </p>
+            </div>
+
+            {/* Our Values */}
+            <div className="p-6 bg-gray-50 shadow-md rounded-lg hover:shadow-lg transition">
+              <FaHandshake className="text-green-800 text-4xl mx-auto mb-4" />
+              <h4 className="text-xl font-semibold mb-2 text-green-800">Our Values</h4>
+              <p className="text-gray-700 text-sm leading-relaxed">
+                We believe in trust, transparency, and user-first design.  
+                Every feature we build is centered around making your life 
+                easier and your subscription tracking seamless.
+              </p>
+            </div>
+          </div>
         </div>
         </section>
+
+        {/* Footer Section */}
+        <footer className="bg-green-800 text-white py-6 mt-8">
+          <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+            
+            {/* Copyright in Center */}
+            <p className="text-sm text-center flex-1">
+              © {new Date().getFullYear()} Subscription Tracker Dashboard
+            </p>
+
+            {/* Social Media Icons */}
+            <div className="flex space-x-4 mt-4 md:mt-0">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                <FaFacebookF className="text-white text-lg hover:text-gray-300 transition" />
+              </a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                <FaInstagram className="text-white text-lg hover:text-gray-300 transition" />
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                <FaLinkedinIn className="text-white text-lg hover:text-gray-300 transition" />
+              </a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                <FaTwitter className="text-white text-lg hover:text-gray-300 transition" />
+              </a>
+            </div>
+          </div>
+        </footer>
     </div>
   );
 }
