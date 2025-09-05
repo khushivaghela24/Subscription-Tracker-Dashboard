@@ -5,8 +5,11 @@ import viewImg from "../images/view.jpg";
 import deleteImg from "../images/delete.jpg";
 import analyticsImg from "../images/analytics.jpg";
 import reminderImg from "../images/reminder.jpg";
+import { useNavigate } from "react-router-dom";
+import ContactUs from "./ContactUs";
 
 export default function Home() {
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen flex flex-col">
       {/* Navbar */}
@@ -25,12 +28,14 @@ export default function Home() {
 
         {/* Right Side - Buttons */}
         <div className="flex space-x-3">
-          <button className="px-4 py-2 border border-white rounded-md text-white text-sm hover:bg-white hover:text-green-800 transition duration-300">
-            Sign In
-          </button>
-          <button className="px-4 py-2 border border-white rounded-md text-white text-sm hover:bg-white hover:text-green-800 transition duration-300">
-            Sign Up
-          </button>
+            <button onClick={() => navigate("/signin")} className="px-4 py-2 border border-white rounded-md text-white text-sm
+             hover:bg-white hover:text-green-800 transition duration-300" >
+              Sign In
+            </button>
+            <button onClick={() => navigate("/signup")} className="px-4 py-2 border border-white rounded-md text-white text-sm
+             hover:bg-white hover:text-green-800 transition duration-300" >
+              Sign Up
+            </button>
         </div>
       </nav>
 
@@ -165,67 +170,7 @@ export default function Home() {
       </section>
 
       {/* Contact Us Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-6">
-            <h3 className="text-3xl font-bold text-green-800 mb-8 text-center">
-            Contact Us
-            </h3>
-
-            <form className="space-y-6">
-            {/* Name */}
-            <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                Name
-                </label>
-                <input
-                type="text"
-                placeholder="Enter your name"
-                className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-800 focus:outline-none"
-                />
-            </div>
-
-            {/* Email */}
-            <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                Email
-                </label>
-                <input
-                type="email"
-                placeholder="Enter your email"
-                className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-800 focus:outline-none"
-                />
-            </div>
-
-            {/* Message */}
-            <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                Message
-                </label>
-                <textarea
-                rows="6"
-                placeholder="Write your message here..."
-                className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-800 focus:outline-none"
-                ></textarea>
-            </div>
-
-            {/* Buttons */}
-            <div className="flex space-x-4 justify-center">
-                <button
-                type="submit"
-                className="bg-green-800 text-white px-6 py-2 rounded-md hover:bg-green-600 transition duration-300"
-                >
-                Submit
-                </button>
-                <button
-                type="reset"
-                className="bg-green-800 text-white px-6 py-2 rounded-md hover:bg-green-600 transition duration-300"
-                >
-                Reset
-                </button>
-            </div>
-            </form>
-        </div>
-        </section>
+        <ContactUs/>
   
         {/* About Us Section */}
         <section className="py-16 bg-gray-100">
