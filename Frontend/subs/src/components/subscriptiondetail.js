@@ -16,27 +16,27 @@ export default function SubscriptionDetails() {
     notes: "",
   });
 
-  const fetchDetails = async () => {
-    try {
-      const token = localStorage.getItem("token");
-      const { data } = await API.get(`/subscriptions/${id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      setSubscription(data);
-      setFormData({
-        name: data.name,
-        cost: data.cost,
-        currency: data.currency,
-        billingCycle: data.billingCycle,
-        renewalDate: data.renewalDate?.split("T")[0], 
-        notes: data.notes || "",
-      });
-    } catch (err) {
-      console.error("Error fetching subscription:", err);
-    }
-  };
-
   useEffect(() => {
+    const fetchDetails = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const { data } = await API.get(`/subscriptions/${id}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        setSubscription(data);
+        setFormData({
+          name: data.name,
+          cost: data.cost,
+          currency: data.currency,
+          billingCycle: data.billingCycle,
+          renewalDate: data.renewalDate?.split("T")[0],
+          notes: data.notes || "",
+        });
+      } catch (err) {
+        console.error("Error fetching subscription:", err);
+      }
+    };
+
     fetchDetails();
   }, [id]);
 
@@ -63,7 +63,10 @@ export default function SubscriptionDetails() {
       });
       alert("Subscription updated!");
       setEditMode(false);
-      fetchDetails();
+      const { data } = await API.get(`/subscriptions/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setSubscription(data);
     } catch (err) {
       console.error("Update failed:", err);
     }
@@ -75,7 +78,7 @@ export default function SubscriptionDetails() {
     <div className="p-6 max-w-2xl mx-auto">
       <button
         onClick={() => navigate("/")}
-        className="mb-4 px-3 py-1 bg-green-800 text-white rounded hover:bg-green-800"
+        className="mb-4 px-3 py-1 bg-green-800 text-white rounded hover:bg-green-900"
       >
         ← Back to Dashboard
       </button>
@@ -97,7 +100,7 @@ export default function SubscriptionDetails() {
             </button>
             <button
               onClick={handleDelete}
-              className="px-4 py-2 bg-green-800 text-white rounded hover:bg-green-800"
+              className="px-4 py-2 bg-green-800 text-white rounded hover:bg-green-900"
             >
               Delete
             </button>
@@ -160,14 +163,14 @@ export default function SubscriptionDetails() {
           <div className="flex gap-4 mt-4">
             <button
               type="submit"
-              className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+              className="px-4 py-2 bg-green-800 text-white rounded hover:bg-green-900"
             >
               Save
             </button>
             <button
               type="button"
               onClick={() => setEditMode(false)}
-              className="px-4 py-2 bg-green-800 text-white rounded hover:bg-green-800"
+              className="px-4 py-2 bg-green-800 text-white rounded hover:bg-green-900"
             >
               Cancel
             </button>

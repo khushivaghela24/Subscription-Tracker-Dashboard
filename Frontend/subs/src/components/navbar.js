@@ -17,7 +17,7 @@ export default function Navbar() {
     localStorage.removeItem("user");
     localStorage.removeItem("token");
     setUser(null);
-    navigate("/signin");
+    navigate("/");
   };
 
   const scrollToSection = (id) => {
