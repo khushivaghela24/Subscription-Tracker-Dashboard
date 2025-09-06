@@ -94,3 +94,22 @@ exports.getTotalCost = async (req, res) => {
     res.status(500).json({ message: "Server error", error: err.message });
   }
 };
+
+const getSubscriptionById = async (req, res) => {
+  try {
+    const subscription = await Subscription.findOne({
+      _id: req.params.id,
+      user: req.user.id, 
+    });
+
+    if (!subscription) {
+      return res.status(404).json({ message: "Subscription not found" });
+    }
+
+    res.json(subscription);
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+exports.getSubscriptionById = getSubscriptionById;

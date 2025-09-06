@@ -1,57 +1,70 @@
-export default function Dashboard({ subscriptions = [] }) {
+import React, { useEffect, useState } from "react";
+import API from "../api";
+import AddSubscription from "./addsubscription";
+import { useNavigate } from "react-router-dom";
+
+export default function Dashboard() {
+  const [subscriptions, setSubscriptions] = useState([]);
+  const [showForm, setShowForm] = useState(false);
+  const navigate = useNavigate();
+
+  const fetchSubs = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const { data } = await API.get("/subscriptions", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setSubscriptions(data);
+    } catch (err) {
+      console.error("Error fetching subscriptions", err);
+    }
+  };
+
+  useEffect(() => {
+    fetchSubs();
+  }, []);
+
   return (
-    <div className="p-6">
-      <h2 className="text-2xl font-bold text-green-800 mb-6">
-        Subscription Dashboard
-      </h2>
+    <div className="p-6 max-w-3xl mx-auto">
+      {/* Add button */}
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-2xl font-bold text-green-800">My Subscriptions</h2>
+        <button
+          onClick={() => setShowForm(!showForm)}
+          className="px-4 py-2 bg-green-800 text-white rounded hover:bg-green-900"
+        >
+          {showForm ? "Close Form" : "Add Subscription"}
+        </button>
+      </div>
 
-      {subscriptions.length === 0 ? (
-        <div className="flex justify-center items-center h-40">
-          <a
-            href="/add-subscription"
-            className="px-6 py-3 bg-green-800 text-white rounded-md hover:bg-green-700 transition"
+      {/* Form (shown only when button clicked) */}
+      {showForm && <AddSubscription onSuccess={fetchSubs} />}
+
+      {/* List of subscriptions */}
+      <ul className="space-y-4 mt-6">
+        {subscriptions.map((sub) => (
+          <li
+            key={sub._id}
+            className="p-4 bg-gray-100 rounded flex justify-between items-center"
           >
-            Add New Subscription
-          </a>
-        </div>
-      ) : (
-        <>
-          <table className="w-full border border-gray-300 mb-6">
-            <thead>
-              <tr className="bg-green-100 text-left">
-                <th className="p-3 border">Name</th>
-                <th className="p-3 border">Cost</th>
-                <th className="p-3 border">Renewal Date</th>
-                <th className="p-3 border">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {subscriptions.map((sub) => (
-                <tr key={sub.id} className="text-sm">
-                  <td className="p-3 border">{sub.name}</td>
-                  <td className="p-3 border">{sub.cost}</td>
-                  <td className="p-3 border">{sub.renewalDate}</td>
-                  <td className="p-3 border text-center">
-                    <button className="px-3 py-1 bg-green-600 text-white rounded hover:bg-green-700">
-                      View Details
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-
-          {/* Button below table */}
-          <div className="flex justify-center">
-            <a
-              href="/add-subscription"
-              className="px-6 py-3 bg-green-800 text-white rounded-md hover:bg-green-700 transition"
+            <div>
+              <p className="font-semibold">{sub.name}</p>
+              <p className="text-sm text-gray-600">
+                {sub.currency} {sub.cost} — {sub.billingCycle}
+              </p>
+              <p className="text-xs text-gray-500">
+                Renewal: {new Date(sub.renewalDate).toDateString()}
+              </p>
+            </div>
+            <button
+              onClick={() => navigate(`/subscriptions/${sub._id}`)}
+              className="px-3 py-1 bg-green-800 text-white rounded hover:bg-green-900"
             >
-              Add New Subscription
-            </a>
-          </div>
-        </>
-      )}
+              View Details
+            </button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

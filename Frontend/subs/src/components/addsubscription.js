@@ -1,86 +1,148 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import API from "../api";
 
-export default function AddSubscription({ addSubscription }) {
-  const navigate = useNavigate();
-
+export default function AddSubscription({ onSuccess }) {
   const [formData, setFormData] = useState({
     name: "",
-    plan: "",
     cost: "",
-    renewal: "",
+    currency: "INR",
+    renewalDate: "",
+    paymentMethod: "",
+    category: "",
+    billingCycle: "monthly",
+    notifyBeforeDays: 3,
+    notes: "",
   });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add new subscription
-    addSubscription(formData);
-    // Redirect back to Dashboard
-    navigate("/dashboard");
+    try {
+      const token = localStorage.getItem("token");
+      await API.post("/subscriptions", formData, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      alert("Subscription added successfully!");
+      onSuccess(); 
+      setFormData({
+        name: "",
+        cost: "",
+        currency: "INR",
+        renewalDate: "",
+        paymentMethod: "",
+        category: "",
+        billingCycle: "monthly",
+        notifyBeforeDays: 3,
+        notes: "",
+      });
+    } catch (err) {
+      alert(err.response?.data?.message || "Error adding subscription");
+    }
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg">
-        <h2 className="text-2xl font-bold text-green-800 mb-6 text-center">
-          Add New Subscription
-        </h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            type="text"
-            name="name"
-            placeholder="Subscription Name"
-            value={formData.name}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-lg"
-            required
-          />
-          <input
-            type="text"
-            name="plan"
-            placeholder="Plan (e.g., Premium, Basic)"
-            value={formData.plan}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-lg"
-            required
-          />
-          <input
-            type="text"
-            name="cost"
-            placeholder="Cost (e.g., ₹499)"
-            value={formData.cost}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-lg"
-            required
-          />
-          <input
-            type="date"
-            name="renewal"
-            value={formData.renewal}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-lg"
-            required
-          />
-          <div className="flex justify-between">
-            <button
-              type="reset"
-              className="px-6 py-2 border border-gray-400 rounded-lg hover:bg-gray-200 transition"
-            >
-              Reset
-            </button>
-            <button
-              type="submit"
-              className="px-6 py-2 bg-green-800 text-white rounded-lg shadow hover:bg-green-700 transition"
-            >
-              Submit
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
+    <form
+      onSubmit={handleSubmit}
+      className="bg-white shadow-md p-6 rounded-lg space-y-4 max-w-md mx-auto"
+    >
+      <h2 className="text-xl font-bold text-green-800">Add Subscription</h2>
+
+      <input
+        type="text"
+        name="name"
+        placeholder="Subscription Name"
+        value={formData.name}
+        onChange={handleChange}
+        className="w-full p-2 border rounded"
+        required
+      />
+
+      <input
+        type="number"
+        name="cost"
+        placeholder="Cost"
+        value={formData.cost}
+        onChange={handleChange}
+        className="w-full p-2 border rounded"
+        required
+      />
+
+      <input
+        type="text"
+        name="currency"
+        placeholder="Currency"
+        value={formData.currency}
+        onChange={handleChange}
+        className="w-full p-2 border rounded"
+      />
+
+      <input
+        type="date"
+        name="renewalDate"
+        value={formData.renewalDate}
+        onChange={handleChange}
+        className="w-full p-2 border rounded"
+        required
+      />
+
+      <input
+        type="text"
+        name="paymentMethod"
+        placeholder="Payment Method"
+        value={formData.paymentMethod}
+        onChange={handleChange}
+        className="w-full p-2 border rounded"
+        required
+      />
+
+      <input
+        type="text"
+        name="category"
+        placeholder="Category"
+        value={formData.category}
+        onChange={handleChange}
+        className="w-full p-2 border rounded"
+        required
+      />
+
+      <select
+        name="billingCycle"
+        value={formData.billingCycle}
+        onChange={handleChange}
+        className="w-full p-2 border rounded"
+      >
+        <option value="monthly">Monthly</option>
+        <option value="yearly">Yearly</option>
+        <option value="weekly">Weekly</option>
+        <option value="custom">Custom</option>
+      </select>
+
+      <input
+        type="number"
+        name="notifyBeforeDays"
+        placeholder="Notify Before Days"
+        value={formData.notifyBeforeDays}
+        onChange={handleChange}
+        className="w-full p-2 border rounded"
+      />
+
+      <textarea
+        name="notes"
+        placeholder="Notes"
+        value={formData.notes}
+        onChange={handleChange}
+        className="w-full p-2 border rounded"
+      />
+
+      <button
+        type="submit"
+        className="w-full bg-green-800 text-white py-2 rounded hover:bg-green-900 transition"
+      >
+        Add Subscription
+      </button>
+    </form>
   );
 }
