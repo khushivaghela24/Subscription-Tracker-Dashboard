@@ -56,6 +56,8 @@ app.use(express.json());
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/subscriptions", require("./routes/subscriptionRoutes"));
 
+app.use("/api/reminders", require("./routes/reminderRoutes"));
+
 app.get("/", (req, res) => {
   res.send("API is running...");
 });
