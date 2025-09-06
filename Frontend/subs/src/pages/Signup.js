@@ -36,19 +36,19 @@ export default function Signup() {
             <tbody> 
                 <tr>
                     <td> <label> Name : </label> </td>
-                    <td> <input type="text" name="name" placeholder="Full Name" value={formData.name} onChange={handleChange} 
+                    <td> <input type="text" name="name" placeholder="Enter your name" value={formData.name} onChange={handleChange} 
                         className="w-full p-2 border rounded mb-3 focus:outline-none focus:ring-1 focus:ring-green-700 
                         focus:border-green-900" required /> </td>
                 </tr>
                 <tr>
                     <td> <label> Email : </label> </td>
-                    <td> <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange}
+                    <td> <input type="email" name="email" placeholder="Enter your email" value={formData.email} onChange={handleChange}
                     className="w-full p-2 border rounded mb-3 focus:outline-none focus:ring-1 focus:ring-green-700 
                     focus:border-green-900" required /> </td>
                 </tr>
                 <tr>
                     <td> <label> Password : </label> </td>
-                    <td> <input type="password" name="password" placeholder="Password" value={formData.password}
+                    <td> <input type="password" name="password" placeholder="Create 6 digit password" value={formData.password}
                     onChange={handleChange} className="w-full p-2 border rounded mb-4 focus:outline-none focus:ring-1 
                     focus:ring-green-700 focus:border-green-900" required /> </td>
                 </tr>
