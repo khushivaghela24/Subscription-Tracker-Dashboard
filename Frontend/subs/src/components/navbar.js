@@ -54,11 +54,11 @@ export default function Navbar() {
           </>
         ) : (
           <>
-            <button onClick={() => scrollToSection("features")} className="text-white hover:text-gray-300">
-                Features
-            </button>
             <button onClick={() => scrollToSection("dashboard")} className="text-white hover:text-gray-300">
                 Dashboard
+            </button>
+            <button onClick={() => scrollToSection("features")} className="text-white hover:text-gray-300">
+                Features
             </button>
             <button onClick={() => scrollToSection("contact")} className="text-white hover:text-gray-300">
                 Contact Us

@@ -50,7 +50,7 @@ export default function Reminders() {
     <div className="max-w-4xl mx-auto p-6">
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-semibold">Upcoming Reminders</h1>
-        <button onClick={fetchReminders} className="px-3 py-1 bg-green-800 text-white rounded hover:bg-blue-700" >
+        <button onClick={fetchReminders} className="px-3 py-1 bg-green-800 text-white rounded hover:bg-green-600" >
           Refresh
         </button>
       </div>

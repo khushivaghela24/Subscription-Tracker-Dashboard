@@ -15,9 +15,9 @@ export default function Home() {
       {!user ? (
       <>
       {/* Hero Section */}
-      <div className="flex-1 flex items-center justify-center bg-gray-50 text-center py-20">
+      <div className="flex-1 flex items-center justify-center text-center py-24">
         <div className="px-4">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-green-800">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-green-800">
             Welcome to Subscription Tracker
           </h2>
           <p className="text-lg md:text-xl text-black-800">
@@ -29,7 +29,7 @@ export default function Home() {
       ) : (
         <>
         {/* Dashboard Section */}
-        <section id="features" className="py-16 bg-gray-100"> 
+        <section id="dashboard" className="py-16"> 
           <Dashboard/>  
         </section>
         </>
@@ -41,7 +41,7 @@ export default function Home() {
       </section>
 
       {/* Contact Us Section */}
-      <section id="contact" className="py-16 bg-gray-100">
+      <section id="contact" className="py-16">
         <Contact/>
       </section>
   

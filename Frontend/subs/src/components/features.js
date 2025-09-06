@@ -7,7 +7,7 @@ import reminderImg from "../images/reminder.jpg";
 
 export default function Features() {
   return (
-            <div className="max-w-6xl mx-auto px-6">
+            <div className="max-w-6xl mx-auto px-6 py-2">
               <h3 className="text-3xl font-bold text-center text-green-800 mb-12">
                 Key Features
               </h3>
