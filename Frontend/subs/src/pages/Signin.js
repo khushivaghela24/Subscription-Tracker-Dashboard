@@ -33,13 +33,13 @@ export default function Signin() {
             <tbody>
                 <tr>
                     <td> <label> Email : </label></td>
-                    <td> <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange}
+                    <td> <input type="email" name="email" placeholder="Enter your email" value={formData.email} onChange={handleChange}
                             className="w-full p-2 border rounded mb-3 focus:outline-none focus:ring-1 focus:ring-green-700 
                             focus:border-green-900" required /></td>
                 </tr>
                 <tr>
                     <td> <label> Password : </label> </td>
-                    <td> <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange}
+                    <td> <input type="password" name="password" placeholder="Enter 6 digit password" value={formData.password} onChange={handleChange}
                             className="w-full p-2 border rounded mb-4 focus:outline-none focus:ring-1 focus:ring-green-700 
                             focus:border-green-900" required /> </td>
                 </tr>
@@ -49,7 +49,7 @@ export default function Signin() {
           Sign In
         </button>
         <p className="text-sm text-center mt-4">
-          Don’t have an account?{" "}
+          Don't have an account?{" "}
           <span onClick={() => navigate("/signup")} className="text-green-800 cursor-pointer" >
             Sign Up
           </span>
