@@ -15,8 +15,8 @@ export default function Signup() {
     e.preventDefault();
     try {
       await API.post("/auth/signup", formData);
-      alert("Signup successful! Please login.");
-      navigate("/signin");
+      alert("Signup successful!.");
+      navigate("/dashboard");
     } catch (err) {
       setError(err.response?.data?.message || "Something went wrong");
     }

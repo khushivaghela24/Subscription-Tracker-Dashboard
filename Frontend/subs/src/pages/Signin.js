@@ -16,7 +16,7 @@ export default function Signin() {
     try {
       const { data } = await API.post("/auth/login", formData); // backend login
       localStorage.setItem("token", data.token); // save JWT
-      alert("Login successful!");
+      alert("Signin successful!");
       navigate("/dashboard");
     } catch (err) {
       setError(err.response?.data?.message || "Invalid credentials");

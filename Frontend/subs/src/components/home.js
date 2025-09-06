@@ -6,7 +6,7 @@ import deleteImg from "../images/delete.jpg";
 import analyticsImg from "../images/analytics.jpg";
 import reminderImg from "../images/reminder.jpg";
 import { useNavigate } from "react-router-dom";
-import ContactUs from "./ContactUs";
+import Contact from "./contact";
 import { FaUsers, FaBullseye, FaHandshake } from "react-icons/fa";
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter } from "react-icons/fa";
 
@@ -172,7 +172,7 @@ export default function Home() {
       </section>
 
       {/* Contact Us Section */}
-        <ContactUs/>
+        <Contact/>
   
       {/* About Us Section */}
       <section className="py-16 bg-gray-200">
@@ -185,7 +185,7 @@ export default function Home() {
           {/* Grid Layout */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
             {/* Our Team */}
-            <div className="p-6 bg-gray-50 shadow-md rounded-lg hover:shadow-lg transition">
+            <div className="p-6 bg-gray-50 shadow-md rounded-lg hover:shadow-xl hover:scale-105 transform transition duration-300">
               <FaUsers className="text-green-800 text-4xl mx-auto mb-4" />
               <h4 className="text-xl font-semibold mb-2 text-green-800">Our Team</h4>
               <p className="text-gray-700 text-sm leading-relaxed">
@@ -196,7 +196,7 @@ export default function Home() {
             </div>
 
             {/* Our Mission */}
-            <div className="p-6 bg-gray-50 shadow-md rounded-lg hover:shadow-lg transition">
+            <div className="p-6 bg-gray-50 shadow-md rounded-lg hover:shadow-xl hover:scale-105 transform transition duration-300">
               <FaBullseye className="text-green-800 text-4xl mx-auto mb-4" />
               <h4 className="text-xl font-semibold mb-2 text-green-800">Our Mission</h4>
               <p className="text-gray-700 text-sm leading-relaxed">
@@ -207,7 +207,7 @@ export default function Home() {
             </div>
 
             {/* Our Values */}
-            <div className="p-6 bg-gray-50 shadow-md rounded-lg hover:shadow-lg transition">
+            <div className="p-6 bg-gray-50 shadow-md rounded-lg hover:shadow-xl hover:scale-105 transform transition duration-300">
               <FaHandshake className="text-green-800 text-4xl mx-auto mb-4" />
               <h4 className="text-xl font-semibold mb-2 text-green-800">Our Values</h4>
               <p className="text-gray-700 text-sm leading-relaxed">
