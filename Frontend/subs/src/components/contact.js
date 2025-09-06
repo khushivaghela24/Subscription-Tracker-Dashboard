@@ -9,7 +9,6 @@ const ContactUs = () => {
   };
 
   return (
-        <section className="py-16 bg-white">
             <div className="max-w-4xl mx-auto px-6">
                 <h3 className="text-3xl font-bold text-green-800 mb-8 text-center"> Contact Us </h3>
 
@@ -82,7 +81,6 @@ const ContactUs = () => {
                 </div>
             )}
             </div>
-        </section>
   );
 };
 

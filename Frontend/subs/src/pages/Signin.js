@@ -12,16 +12,19 @@ export default function Signin() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const { data } = await API.post("/auth/login", formData); // backend login
-      localStorage.setItem("token", data.token); // save JWT
-      alert("Signin successful!");
-      navigate("/dashboard");
-    } catch (err) {
-      setError(err.response?.data?.message || "Invalid credentials");
-    }
-  };
+  e.preventDefault();
+  try {
+    const { data } = await API.post("/auth/login", formData);
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("user", JSON.stringify(data.user));
+    alert("Signin successful!");
+    navigate("/");
+    window.location.reload();
+  } catch (err) {
+    setError(err.response?.data?.message || "Invalid credentials");
+  }
+};
+
 
   return (
     <div className="flex items-center justify-center h-screen bg-gray-100">

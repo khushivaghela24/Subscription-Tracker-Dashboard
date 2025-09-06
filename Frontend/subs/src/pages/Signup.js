@@ -12,15 +12,18 @@ export default function Signup() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await API.post("/auth/signup", formData);
-      alert("Signup successful!.");
-      navigate("/dashboard");
-    } catch (err) {
-      setError(err.response?.data?.message || "Something went wrong");
-    }
-  };
+  e.preventDefault();
+  try {
+    const { data } = await API.post("/auth/signup", formData);
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("user", JSON.stringify(data.user));
+    alert("Signup successful!");
+    navigate("/");
+    window.location.reload();
+  } catch (err) {
+    setError(err.response?.data?.message || "Something went wrong");
+  }
+};
 
   return (
     <div className="flex items-center justify-center h-screen bg-gray-100">
