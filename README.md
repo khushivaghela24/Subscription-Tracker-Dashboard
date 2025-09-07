@@ -8,8 +8,7 @@ A full-stack web application built using the **MERN stack** (MongoDB, Express, R
 
 - 🔐 **User Authentication** (Sign Up / Sign In)
 - 📊 **Dashboard** to view all subscriptions in table format
-- ➕ **Add / Edit / Delete Subscriptions**
-- 🔔 **Renewal Reminders** via Email Notifications
+- ➕ **Add / Edit / Delete / View Subscriptions**
 - 💸 **Analytics** to track expenses and visualize spending
 - 🕒 **Automated CRON jobs** to send timely reminders
 - 🌐 **Responsive UI** with modern design
@@ -29,8 +28,7 @@ A full-stack web application built using the **MERN stack** (MongoDB, Express, R
 - MongoDB (Mongoose)  
 - Node-Cron (for reminders)  
 
-**Other Tools:**
-- Nodemailer (Email Reminders)  
+**Other Tools:** 
 - JWT Authentication  
 - dotenv, cors  
 
