@@ -26,7 +26,6 @@ A full-stack web application built using the **MERN stack** (MongoDB, Express, R
 - Node.js  
 - Express.js  
 - MongoDB (Mongoose)  
-- Node-Cron (for reminders)  
 
 **Other Tools:** 
 - JWT Authentication  
@@ -67,13 +66,6 @@ cd Subscription-Tracker-Dashboard
 cd Backend
 npm install
 
-Create a .env file inside Backend/:
-
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
-EMAIL_USER=your_email@example.com
-EMAIL_PASS=your_email_password
-
 Run backend:
 
 npx nodemon server.js
@@ -90,15 +82,13 @@ Frontend runs on http://localhost:3000
 
 🔮 Future Enhancements
 
-📱 Mobile App (React Native / Flutter)
+📱 Mobile App 
 
-🤖 AI-based subscription cost prediction & insights
+🤖 AI-based subscription suggestions
 
-💳 Secure Payment Integration
+💳 Multiple Payment Integration
 
-🌍 Multi-language & Multi-currency support
-
-📜 License
+🌍 Advanced Analytics
 
 🙌 Contributors
 Vaghela Khushi Jitendra Kumar – Developer
