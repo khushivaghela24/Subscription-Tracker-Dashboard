@@ -25,15 +25,15 @@ export default function Dashboard() {
   }, []);
 
   return (
-    <div className="p-6 max-w-3xl mx-auto">
+    <div className="px-6 py-12 max-w-3xl mx-auto">
       {/* Add button */}
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold text-green-800">My Subscriptions</h2>
+        <h2 className="text-2xl font-bold text-left text-green-800">Subscriptions Dashboard</h2>
         <button
           onClick={() => setShowForm(!showForm)}
           className="px-4 py-2 bg-green-800 text-white rounded hover:bg-green-900"
         >
-          {showForm ? "Close Form" : "Add Subscription"}
+          {showForm ? "Close Form" : "+ Add Subscription"}
         </button>
       </div>
 
