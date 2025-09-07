@@ -78,6 +78,26 @@ cd Frontend/subs
 npm install
 npm start
 
+4️⃣ Access the App
+
+Open your browser and go to: http://localhost:3000
+Signup as a new user
+
+Explore the Dashboard to:
+➕ Add a new subscription
+👀 View all your subscriptions
+✏️ Edit or ❌ Delete subscriptions
+💡 Get reminders
+
+For Demo:
+Signin as khushivaghela3001@gmail.com with Password 123456
+
+Explore the Dashboard to:
+👀 View all subscriptions
+➕ Add a new subscription
+✏️ Edit or ❌ Delete subscriptions
+💡 Get reminders
+
 Frontend runs on http://localhost:3000
 
 🔮 Future Enhancements
