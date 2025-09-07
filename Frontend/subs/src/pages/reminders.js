@@ -87,7 +87,7 @@ export default function Reminders() {
                 </p>
                 <p className="text-xs text-gray-500 mt-1">Payment: {r.paymentMethod || "N/A"}</p>
                 <div className="mt-3 flex gap-2">
-                  <Link to={`/`} className="text-sm px-3 py-1 border rounded hover:bg-gray-50">
+                  <Link to={`/`} className="text-sm px-3 py-1 border rounded hover:bg-green-400">
                     View Dashboard
                   </Link>
                 </div>
